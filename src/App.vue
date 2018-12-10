@@ -31,9 +31,6 @@ export default {
     return {
       items: fillList(50)
     }
-  },
-  methods: {
-
   }
 }
 </script>

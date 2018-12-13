@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="grid">
-    <Container group-name="1" orientation="horizontal" class="grid-row" v-for="(row, x) of items" :key="x">
+    <Container group-name="1" orientation="vertical" class="grid-column" v-for="(row, x) of items" :key="x">
         <Draggable class="grid-cell" v-for="(cell, y) of row" :key="y">
           <span>{{ cell }}</span>
         </Draggable>
@@ -11,12 +11,12 @@
 <script>
 import { Container, Draggable } from "vue-smooth-dnd";
 
-function fillList(size) {
+function fillList(colcount, cellcount) {
   const items = [];
 
-  for (let x = 0; x < size; x += 1) {
+  for (let x = 0; x < colcount; x += 1) {
     items.push([]);
-    for (let y = 0; y < size; y += 1) {
+    for (let y = 0; y < cellcount; y += 1) {
       items[x].push(`${x}, ${y}`);
     }
   }
@@ -29,7 +29,7 @@ export default {
   components: { Container, Draggable },
   data () {
     return {
-      items: fillList(50)
+      items: fillList(100, 50)
     }
   }
 }
@@ -45,20 +45,25 @@ export default {
   margin-top: 60px;
 }
 
-.grid-row {
+.grid {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  height: 50px;
+}
+
+.grid-column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100px;
 }
 
 .grid-cell {
-  align-items: center;
   border: 1px solid gray;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  flex: 0 0 100px;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 </style>

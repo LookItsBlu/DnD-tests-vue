@@ -64,6 +64,7 @@ export default {
   height: 50px;
   width: 100%;
   box-sizing: border-box;
+  user-select: none;
 }
 
 </style>

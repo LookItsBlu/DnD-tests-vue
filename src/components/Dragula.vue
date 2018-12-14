@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <div v-dragula="items" drake="first" class="grid-column" v-for="(row, x) of items" :key="x">
+    <div class="grid-column" v-for="(row, x) of items" :key="x" bag="LIST" v-dragula="items[x]">
       <div class="grid-cell" v-for="(cell, y) of row" :key="y">
         <span>{{ cell }}</span>
       </div>
@@ -31,8 +31,8 @@ export default {
     }
   },
   created() {
-    let service = this.$dragula.$service
-    service.options('first', {})
+    // let service = this.$dragula.$service
+    // service.options('LIST', {})
   }
 }
 </script>
